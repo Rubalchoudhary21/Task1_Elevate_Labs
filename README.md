@@ -42,7 +42,7 @@ nmap -p- -sS 192.168.27.0/24
 
 -sS performs a TCP SYN scan (also known as a stealth scan)
 
-📋 Identified Open Ports and Services
+📋 Identified Open Ports and Services:
 
 🔹 192.168.27.1
 Port: 7070/tcp
