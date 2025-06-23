@@ -1,12 +1,12 @@
 Scan Your Local Network for Open Ports
 
-Overview
+Overview:
 
 This project demonstrates a basic network scanning task performed using Nmap on Kali Linux. The objective was to identify active hosts within a specific target network and then perform a full TCP port scan on those hosts. The process included host discovery and a comprehensive scan of all TCP ports using appropriate Nmap flags.
 
-Tools Used
+Tools Used:
 
-Kali Linux (Operating System) Nmap (Network Mapper) and Wire Shark
+Kali Linux (Operating System) Nmap (Network Mapper) 
 
 Target Network: 192.168.27.0/24
 
@@ -25,7 +25,8 @@ nmap -p- -sS 192.168.27.0/24
 
 -sS performs a SYN scan (stealth scan)
 
-Identified Open Ports and Services
+Identified Open Ports and Services:
+
 1. 192.168.27.1
 Port: 7070/tcp
 
