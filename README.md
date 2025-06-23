@@ -101,7 +101,7 @@ Enforce HTTPS (port 443)
 
 Perform web vulnerability assessments (e.g., Nikto, OWASP ZAP)
 
-🔐 General Security Recommendations:
+ General Security Recommendations:
 🔒 Block unused ports using UFW or iptables
 
 🔍 Use Nmap scripts (-sC) or vulnerability scans (--script vuln) for deeper analysis
@@ -110,7 +110,7 @@ Perform web vulnerability assessments (e.g., Nikto, OWASP ZAP)
 
 📶 Segment networks and apply access controls (limit exposure of services like DNS/HTTP)
 
-✅ Conclusion
+ Conclusion
 This scanning activity provided hands-on experience with host discovery and port scanning techniques using Nmap. It reinforced essential skills for network reconnaissance, which is a critical step in both ethical hacking and penetration testing workflows.
 
 
