@@ -1,92 +1,108 @@
-Scan Your Local Network for Open Ports
+# Scan Your Local Network for Open Ports
 
-Overview:
+##  Overview
 
-This project demonstrates a basic network scanning task performed using Nmap on Kali Linux. The objective was to identify active hosts within a specific target network and then perform a full TCP port scan on those hosts. The process included host discovery and a comprehensive scan of all TCP ports using appropriate Nmap flags.
+This project demonstrates a basic network scanning exercise using **Nmap** on **Kali Linux**. The goal was to identify **active hosts** within the local subnet and then perform a **comprehensive TCP port scan** on each detected host. The process involved both **host discovery** and a **full port scan** using standard Nmap flags.
 
-Tools Used:
+---
 
-Kali Linux (Operating System) Nmap (Network Mapper) 
+##  Tools Used
 
-Target Network: 192.168.27.0/24
+- **Operating System**: Kali Linux  
+- **Scanner**: [Nmap](https://nmap.org/) (Network Mapper)
 
-Steps Performed:
+---
 
-Host Discovery
+##  Target Network
+
+`192.168.27.0/24`
+
+---
+
+## 🔧 Steps Performed
+
+### 1️⃣ Host Discovery
+
 To identify live hosts within the target network, the following Nmap command was used:
 
-nmap -sn 192.168.27.0/24 -sn flag performs a "ping scan" to detect which hosts are up.
+```bash
+nmap -sn 192.168.27.0/24
+The -sn flag performs a ping scan to detect which hosts are up.
 
-Once the active hosts were identified, a full TCP scan was performed on all ports using the following command:
+2️⃣ Full TCP Port Scan
+After detecting active hosts, a complete TCP scan was performed using:
 
+bash
+Copy
+Edit
 nmap -p- -sS 192.168.27.0/24
+-p- scans all 65535 TCP ports
 
--p- flag scans all 65535 TCP ports.
+-sS performs a TCP SYN scan (also known as a stealth scan)
 
--sS performs a SYN scan (stealth scan)
-
-Identified Open Ports and Services:
-
-1. 192.168.27.1
+📋 Identified Open Ports and Services
+🔹 192.168.27.1
 Port: 7070/tcp
 
 Service: realserver
-Common Use: This port is often used by RealNetworks streaming media server or sometimes custom applications.
 
-Risk: If not patched, RealServer services have known buffer overflow vulnerabilities and directory traversal flaws.
+Common Use: Used by RealNetworks streaming media server or custom apps
 
-Recommendation: If RealServer is unnecessary, disable it. Otherwise, ensure it’s updated and protected with firewall rules.
+Risk: Known for buffer overflow and directory traversal vulnerabilities
 
-2. 192.168.27.2
+Recommendation: Disable if not needed. Otherwise, patch and apply firewall rules
+
+🔹 192.168.27.2
 Port: 53/tcp
 
 Service: domain (DNS over TCP)
 
-Risk: Open DNS ports can be abused for:
+Risks:
 
-DNS amplification DDoS attacks
+Vulnerable to DNS amplification DDoS
 
-Zone transfer leaks if misconfigured
+May expose zone transfers if misconfigured
 
 Recommendation:
 
-Limit DNS services to internal network
+Limit access to internal IPs
 
-Block TCP/53 externally if not required
+Block external access on TCP/53
 
-Harden BIND or DNS server configuration
+Harden DNS server configuration
 
-3. 192.168.27.254
-All ports are in ignored states
+🔹 192.168.27.254
+Observation: All ports in ignored or filtered states
 
-Explanation: No open ports detected, or all were filtered (no response). Not a direct security concern, but may hide detection intentionally.
+Explanation: No open ports detected; host may intentionally suppress responses
 
-4. 192.168.27.128
+Risk: Minimal, but may suggest evasion techniques
+
+🔹 192.168.27.128
 Port: 80/tcp
 
 Service: http
 
-Risk:
+Risks:
 
-Plaintext communication (susceptible to sniffing or MITM attacks)
+Transmits data in plaintext, vulnerable to MITM/sniffing
 
-May expose outdated web servers (e.g., Apache, Nginx, IIS) or vulnerable web applications (e.g., CMS like WordPress)
+Could expose outdated or unpatched web applications
 
 Recommendation:
 
-Migrate to HTTPS (port 443)
+Enforce HTTPS (port 443)
 
-Perform web vulnerability scanning (e.g., with Nikto or OWASP ZAP)
+Perform web vulnerability assessments (e.g., Nikto, OWASP ZAP)
 
-General Security Recommendations:
-Block unused ports with a firewall (UFW/iptables).
+🔐 General Security Recommendations
+🔒 Block unused ports using UFW or iptables
 
-Use Nmap scripts (-sC) or vuln scans to further analyze exposed services.
+🔍 Use Nmap scripts (-sC) or vulnerability scans (--script vuln) for deeper analysis
 
-Apply patches and monitor logs for signs of exploitation.
+🛡️ Keep all exposed services patched
 
-Limit access using network segmentation and access controls (e.g., only allow internal IPs to reach DNS or HTTP if needed).
+📶 Segment networks and apply access controls (limit exposure of services like DNS/HTTP)
 
-Conclusion
-
-The scanning exercise provided insights into discovering live hosts in a network and identifying open ports using different Nmap scanning techniques. This is a foundational step in network reconnaissance and penetration testing.
+✅ Conclusion
+This scanning activity provided hands-on experience with host discovery and port scanning techniques using Nmap. It reinforced essential skills for network reconnaissance, which is a critical step in both ethical hacking and penetration testing workflows.
