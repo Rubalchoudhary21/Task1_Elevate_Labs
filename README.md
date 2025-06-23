@@ -21,26 +21,29 @@ This project demonstrates a basic network scanning exercise using **Nmap** on **
 
 ## 🔧 Steps Performed
 
-### 1️⃣ Host Discovery
+### 
+
+```bash
+
+**1️⃣ Host Discovery**
 
 To identify live hosts within the target network, the following Nmap command was used:
 
-```bash
+
 nmap -sn 192.168.27.0/24
 The -sn flag performs a ping scan to detect which hosts are up.
 
-2️⃣ Full TCP Port Scan
+**2️⃣ Full TCP Port Scan**
 After detecting active hosts, a complete TCP scan was performed using:
 
-bash
-Copy
-Edit
+
 nmap -p- -sS 192.168.27.0/24
 -p- scans all 65535 TCP ports
 
 -sS performs a TCP SYN scan (also known as a stealth scan)
 
 📋 Identified Open Ports and Services
+
 🔹 192.168.27.1
 Port: 7070/tcp
 
@@ -53,6 +56,7 @@ Risk: Known for buffer overflow and directory traversal vulnerabilities
 Recommendation: Disable if not needed. Otherwise, patch and apply firewall rules
 
 🔹 192.168.27.2
+
 Port: 53/tcp
 
 Service: domain (DNS over TCP)
@@ -72,6 +76,7 @@ Block external access on TCP/53
 Harden DNS server configuration
 
 🔹 192.168.27.254
+
 Observation: All ports in ignored or filtered states
 
 Explanation: No open ports detected; host may intentionally suppress responses
@@ -79,6 +84,7 @@ Explanation: No open ports detected; host may intentionally suppress responses
 Risk: Minimal, but may suggest evasion techniques
 
 🔹 192.168.27.128
+
 Port: 80/tcp
 
 Service: http
@@ -95,7 +101,7 @@ Enforce HTTPS (port 443)
 
 Perform web vulnerability assessments (e.g., Nikto, OWASP ZAP)
 
-🔐 General Security Recommendations
+🔐 General Security Recommendations:
 🔒 Block unused ports using UFW or iptables
 
 🔍 Use Nmap scripts (-sC) or vulnerability scans (--script vuln) for deeper analysis
@@ -106,3 +112,6 @@ Perform web vulnerability assessments (e.g., Nikto, OWASP ZAP)
 
 ✅ Conclusion
 This scanning activity provided hands-on experience with host discovery and port scanning techniques using Nmap. It reinforced essential skills for network reconnaissance, which is a critical step in both ethical hacking and penetration testing workflows.
+
+
+
